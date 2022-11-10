@@ -1,7 +1,12 @@
 <template>
   <header>
     <h1>Task Tracker</h1>
-    <Button text="Abdellah" color="green">Add</Button>
+    <Button
+      :text="showForm ? 'Close' : 'Add Task'"
+      :color="showForm ? 'Red' : 'Green'"
+      @btn-click="$emit('toggle-form')"
+      >Add</Button
+    >
   </header>
 </template>
 
@@ -10,6 +15,9 @@ import Button from "./Button";
 
 export default {
   name: "Header",
+  props: {
+    showForm: Boolean,
+  },
   components: {
     Button,
   },
