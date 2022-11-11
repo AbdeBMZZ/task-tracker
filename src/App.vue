@@ -1,19 +1,25 @@
 <template>
   <div class="container">
     <Header @toggle-form="toggleAddTask" :showForm="showAddTask" />
-    <div v-show="showAddTask">
+
+    <div v-if="showAddTask">
       <AddTask @add-task="addTask" />
     </div>
+
     <Tasks
       :tasks="tasks"
       @delete-task="deleteTask"
       @toggle-reminder="toggleReminder"
     />
+
+    <router-view></router-view>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
@@ -21,6 +27,7 @@ export default {
   name: "App",
   components: {
     Header,
+    Footer,
     Tasks,
     AddTask,
   },
@@ -35,6 +42,7 @@ export default {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
+
     deleteTask(id) {
       this.tasks = this.tasks.filter((task) => task.id !== id);
     },

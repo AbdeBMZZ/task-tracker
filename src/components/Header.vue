@@ -1,12 +1,14 @@
 <template>
   <header>
     <h1>Task Tracker</h1>
+
     <Button
       :text="showForm ? 'Close' : 'Add Task'"
       :color="showForm ? 'Red' : 'Green'"
       @btn-click="$emit('toggle-form')"
-      >Add</Button
     >
+      Add
+    </Button>
   </header>
 </template>
 
